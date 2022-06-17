@@ -1,0 +1,25 @@
+# R2Devops.io pipeline generation - this aims to be included in your pipeline
+#
+# Inputs:
+#   - List of technologies detected in the project : codeowners, dockerfile, editorconfig, go, ignore list, markdown, shell, text, yaml,
+
+name: R2Devops
+on:
+  push:
+    branches: [ master, r2devops-autopipeline]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: gitleaks-action
+      uses: zricethezav/gitleaks-action@master
+
+
+# R2DEVOPS - PROJECT CUSTOMIZATIONS
+# You can update them in your settings :)
+
